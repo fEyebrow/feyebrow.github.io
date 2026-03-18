@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # 推荐使用较新的 LTS 版本
+          node-version: '24' # 推荐使用较新的 LTS 版本
           cache: 'npm'       # 如果你用 pnpm 或 yarn，可修改为对应的包管理器
 
       - name: Install dependencies
