@@ -6,16 +6,6 @@ lang: "en"
 draft: false
 ---
 
-```mermaid
-flowchart TD
-    A["👀 Observe Environment"] --> B{"🧠 Model Thinks"}
-    B -- "Task incomplete" --> C["📝 Model generates command\n(grep / find / cat ...)"]
-    C --> D["⚙️ Terminal executes"]
-    D --> E["📋 Model reads output"]
-    E --> B
-    B -- "Task complete" --> F["✅ Final response"]
-```
-
 The AI coding tool landscape has shifted. Cursor was the dominant player — the IDE everyone recommended. Now developers are switching to Claude Code in droves. The reason isn't just model capability. It's a fundamental difference in how each tool thinks about the relationship between a model and a codebase.
 
 ## How Cursor Works: Index First, Query Later
@@ -31,6 +21,16 @@ This sounds reasonable, but it creates real problems in practice:
 To be fair, Cursor isn't just RAG. It also uses tree-sitter for syntax analysis, file reference tracking, and other techniques. But the overall philosophy is the same: **pre-process the codebase into a compressed, queryable form, then teach the model how to use it.**
 
 ## How Claude Code Works: Give the Model a Terminal
+
+```mermaid
+flowchart TD
+    A["👀 Observe Environment"] --> B{"🧠 Model Thinks"}
+    B -- "Task incomplete" --> C["📝 Model generates command\n(grep / find / cat ...)"]
+    C --> D["⚙️ Terminal executes"]
+    D --> E["📋 Model reads output"]
+    E --> B
+    B -- "Task complete" --> F["✅ Final response"]
+```
 
 Claude Code takes a radically different approach. No index. No vector database. No embeddings. Its strategy is almost embarrassingly simple — give the model terminal access and let it read the code directly.
 
