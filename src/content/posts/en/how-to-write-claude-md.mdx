@@ -1,0 +1,23 @@
+---
+title: "How to Write CLAUDE.md"
+date: 2026-03-24
+summary: "CLAUDE.md doesn't need to be perfect from the start — it's a context management tool that evolves gradually as you build your project."
+lang: en
+draft: true
+---
+
+Since I started using Claude Code, I've barely touched CLAUDE.md. I've tried `/init` to generate one, and I've tried leaving it empty. I knew it was supposed to be important, but I could never figure out how to use it well.
+
+After reading a number of posts from long-time Claude Code users, it finally clicked: CLAUDE.md is essentially a context management tool for guiding the LLM effectively, and it **evolves incrementally** — you don't need to get it right from the start. In the early stages of a project, CLAUDE.md can be completely empty. I had been using plan.md to manage context and getting good results. Once I realized this, I let go of the pressure to fill CLAUDE.md with something meaningful.
+
+Here are a few practitioners whose approaches I learned from.
+
+**[Ben's Builds](https://www.bensbites.com/p/bens-builds-2)**: He wrote his workflow in AGENTS.md — expectations for output, how the LLM should work, and even a prompt that makes the LLM confirm AGENTS.md was loaded successfully (a nice touch).
+
+**[OneV's Den](https://onevcat.com/2025/08/claude-code/#%E5%B0%8F%E6%AD%A5%E8%BF%AD%E4%BB%A3%E8%BF%98%E6%98%AF%E6%94%BE%E9%A3%9E%E8%87%AA%E6%88%91)**: He only listed build commands, test commands, and linter config in his CLAUDE.md — very minimal. But the article's broader ideas on context management are well worth reading.
+
+**[Claude Code team's CLAUDE.md](https://x.com/milesdeutscher/status/2034658673738580442)**: It describes "what to do in what situation" — general working methods and their purposes. It's essentially a collection of context management rules, capturing past mistakes, conventions, and constraints. For example, "it's not done until verification passes" — important because LLMs do tend to cut corners.
+
+As it happens, Claude Code updated `/init` today. I gave it a try, and the generated CLAUDE.md was much more concise than before, focusing on just a few core questions: Is this a personal or team project? What's your role? How familiar are you with the project? How do you want the LLM to communicate with you?
+
+This reinforced my belief: CLAUDE.md isn't a document you need to carefully design upfront. It's something that gradually accumulates through use. I'll keep learning from how others manage context and borrow what's useful. But the most important thing is to stop obsessing over the tool and focus on building the project itself.

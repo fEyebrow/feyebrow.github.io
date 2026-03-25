@@ -14,3 +14,6 @@ dist
 
 # Test results
 test-results
+
+# Personal Claude preferences (not shared)
+CLAUDE.local.md
