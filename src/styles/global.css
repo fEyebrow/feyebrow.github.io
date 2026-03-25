@@ -493,6 +493,18 @@ footer {
   filter: invert(1) hue-rotate(180deg);
 }
 
+.article-content a {
+  color: var(--accent-willow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--accent-willow) 40%, transparent);
+}
+
+.article-content a:hover {
+  color: var(--accent-willow);
+  text-decoration-color: var(--accent-willow);
+}
+
 .article-content code {
   color: var(--accent-willow);
   font-family: var(--font-mono);
