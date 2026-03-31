@@ -1,19 +1,13 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
 on:
-  # 当代码推送到 main 分支时自动触发构建
   push:
     branches: ["main"]
-  # 允许在 GitHub 网页上手动点击按钮触发构建
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，允许 Action 部署页面
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# 只允许同时进行一次部署，避免冲突
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -51,26 +45,13 @@ jobs:
         run: pnpm exec playwright install chromium
 
       - name: Build the static site
-        # 这里的命令会把你的 Markdown/MDX 编译成纯静态文件
         run: pnpm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          # 【注意】修改这里的路径为你框架默认输出的静态文件目录：
-          # Astro 通常是 './dist'
-          # Next.js 通常是 './out'
-          # Docusaurus 通常是 './build'
-          path: './dist'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: blog
+          directory: ./dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
